@@ -37,6 +37,16 @@
     <script type="text/javascript" src="./JS/lazysizes.min.js"></script>
     <!-- Lazy Loadを起動する -->
     <!--<script>$(function($){$("img.lazy").lazyload();});</script>-->
+    <!-- reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeZ3ZgaAAAAADsDIlDKSvKxmLJzDmZvjMUD7fhH"></script>
+    <script>
+        grecaptcha.ready(function () {
+            grecaptcha.execute("6LeZ3ZgaAAAAADsDIlDKSvKxmLJzDmZvjMUD7fhH", {action: "sent"}).then(function(token) {
+            var recaptchaResponse = document.getElementById("recaptchaResponse");
+            recaptchaResponse.value = token;
+            });
+        });
+    </script>
         <!-- <?/*php wp_head(); */?> -->
 </head>
 <body>
@@ -107,6 +117,7 @@
                                 </div>
                                 <textarea name="content" id="" class="form-textarea"></textarea>
                             </li>
+                            <input type="hidden" name="recaptchaResponse" id="recaptchaResponse">
                             <div class="w-btn-5">
                                 <button type="submit" class="btn-5 h-btn">この内容で送信する<span class="f-yaji"><img src="http://dev-ac.heteml.net/mino/2022/jyounetu/img/f-yaji@2x.png" alt="insta" class="wi100 ls-is-cached lazyloaded"></span></button>
                             </div>
